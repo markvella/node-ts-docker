@@ -1,0 +1,14 @@
+version: "3.5"
+services:
+
+    app:  # service name
+        build:
+            context: .
+            dockerfile: Dockerfile
+        volumes:
+            - .:/app
+            - ./dist:/app/dist
+        ports:
+            - "3000:3000"
+            - "9222:9222" # debug port node for inspect-brk
+        command: npm run debug-brk  # debugging command
